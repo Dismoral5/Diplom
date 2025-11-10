@@ -22,19 +22,21 @@
     "@electron-toolkit/utils": "^4.0.0",
     "@primeuix/themes": "^1.2.5",
     "@tailwindcss/vite": "^4.1.17",
-    "electron-updater": "^6.3.9",
-    "tailwindcss": "^4.1.17"
+    "electron-updater": "^6.3.9"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config": "^2.1.0",
     "@electron-toolkit/eslint-config-prettier": "^3.0.0",
+    "@vicons/fluent": "^0.13.0",
     "@vitejs/plugin-vue": "^6.0.1",
     "electron": "^38.1.2",
     "electron-builder": "^25.1.8",
     "electron-vite": "^4.0.1",
     "eslint": "^9.36.0",
     "eslint-plugin-vue": "^10.4.0",
+    "naive-ui": "^2.43.1",
     "prettier": "^3.6.2",
+    "vfonts": "^0.0.3",
     "vite": "^7.1.6",
     "vue": "^3.5.21",
     "vue-eslint-parser": "^10.2.0"
