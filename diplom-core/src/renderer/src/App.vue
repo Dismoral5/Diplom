@@ -1,12 +1,12 @@
 <script setup>
-import SearchForm from './components/SearchForm.vue'
+import SearchForm from './layout/SearchForm.vue'
 import { darkTheme, useOsTheme } from 'naive-ui'
-import { computed } from 'vue'
-import DocumentAdd24Regular from '@vicons/fluent/DocumentAdd24Regular'
-import DocumentSearch24Regular from '@vicons/fluent/DocumentSearch24Regular'
-import Settings20Regular from '@vicons/fluent/Settings20Regular'
-import Info20Regular from '@vicons/fluent/Info20Regular'
-import Result from './components/Result.vue'
+import { computed, ref } from 'vue'
+import Result from './layout/Result.vue'
+import Navigator from './components/Navigator.vue'
+import { menuOptionsKeys } from './data/constants'
+
+const selectedMenuItem = ref(menuOptionsKeys.Searching)
 
 const osTheme = useOsTheme()
 const theme = computed(() => (osTheme.value === 'dark' ? darkTheme : null))
@@ -17,54 +17,16 @@ const theme = computed(() => (osTheme.value === 'dark' ? darkTheme : null))
         <NSpace vertical>
             <NLayout has-sider class="h-lvh" embedded>
                 <NLayoutSider>
-                    <NList clickable hoverable :show-divider="false" :bordered="false">
-                        <template #header> Опции </template>
-
-                        <NListItem>
-                            <template #prefix>
-                                <NIcon size="24">
-                                    <DocumentAdd24Regular />
-                                </NIcon>
-                            </template>
-                            Загрузка документов
-                        </NListItem>
-
-                        <NListItem>
-                            <template #prefix>
-                                <NIcon size="24">
-                                    <DocumentSearch24Regular />
-                                </NIcon>
-                            </template>
-                            Поиск информации
-                        </NListItem>
-
-                        <NListItem>
-                            <template #prefix>
-                                <NIcon size="24">
-                                    <Info20Regular />
-                                </NIcon>
-                            </template>
-                            Помощь
-                        </NListItem>
-
-                        <NListItem>
-                            <template #prefix>
-                                <NIcon size="24">
-                                    <Settings20Regular />
-                                </NIcon>
-                            </template>
-                            Настройки
-                        </NListItem>
-                    </NList>
+                    <Navigator v-model:selected="selectedMenuItem" />
                 </NLayoutSider>
 
                 <NLayout>
                     <NLayoutContent content-class="p-4 h-full">
-                        <Result />
+                        <Result v-if="selectedMenuItem === menuOptionsKeys.Searching" />
                     </NLayoutContent>
                 </NLayout>
 
-                <NLayoutSider>
+                <NLayoutSider v-if="selectedMenuItem === menuOptionsKeys.Searching">
                     <SearchForm />
                 </NLayoutSider>
             </NLayout>
